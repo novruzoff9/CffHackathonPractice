@@ -27,7 +27,14 @@ public class CategoriesController(ICategoryService categoryService) : Controller
     public async Task<IActionResult> Create(CategoryCreateDto createDto)
     {
         var result = await categoryService.CreateCategoryAsync(createDto);
-        var response = Response<CategoryReturnDto>.Success(result, 204);
+        var response = Response<CategoryReturnDto>.Success(result, 201);
+        return Ok(response);
+    }
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> Delete(string id)
+    {
+        var result = await categoryService.RemoveCategoryAsync(id);
+        var response = Response<string>.Success(result, 200);
         return Ok(response);
     }
 }

@@ -10,6 +10,7 @@ public interface ICategoryService
     Task<CategoryReturnDto> CreateCategoryAsync(CategoryCreateDto createDto);
     Task<CategoryReturnDto> GetCategoryAsync(string id);
     Task<List<CategoryReturnDto>> GetCategoriesAsync();
+    Task<string> RemoveCategoryAsync(string id);
 }
 
 
@@ -38,11 +39,26 @@ public class CategoryService(ApplicationDbContext dbContext) : ICategoryService
     public async Task<CategoryReturnDto> GetCategoryAsync(string id)
     {
         var category = await dbContext.Categories
+            .Where(x => x.Id == id)
             .Select(x => new CategoryReturnDto(x.Id, x.Name))
-            .FirstOrDefaultAsync(x => x.Id == id);
+            .FirstOrDefaultAsync();
 
         if (category == null)
             throw new NotFoundException("Category not found");
         return category;
+    }
+
+    public async Task<string> RemoveCategoryAsync(string id)
+    {
+        var category = await dbContext.Categories
+            .Include(x=>x.Products)
+            .FirstOrDefaultAsync(x => x.Id == id);
+        if (category == null)
+            throw new NotFoundException($"{id}-li Category yoxdur");
+        if (category.Products.Count > 0)
+            throw new ConflictException("Bu kateqoriyaya aid məhsullar var");
+        dbContext.Categories.Remove(category);
+        await dbContext.SaveChangesAsync();
+        return category.Id;
     }
 }

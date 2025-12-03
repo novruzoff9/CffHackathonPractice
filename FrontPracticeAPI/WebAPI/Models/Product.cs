@@ -7,5 +7,5 @@ public class Product(string name, string description, decimal price, string cate
     public string Description { get; private set; } = description;
     public decimal Price { get; private set; } = price;
     public string CategoryId { get; private set; } = categoryId;
-    public Category? Category { get; }
+    public Category? Category { get; private set; }
 }

@@ -27,7 +27,7 @@ public class ProductsController(IProductService productService) : ControllerBase
     public async Task<IActionResult> Create(ProductCreateDto createDto)
     {
         var result = await productService.CreateProductAsync(createDto);
-        var response = Response<ProductReturnDto>.Success(result, 204);
+        var response = Response<ProductReturnDto>.Success(result, 201);
         return Ok(response);
     }
     [HttpGet("category/{id}")]
@@ -35,6 +35,13 @@ public class ProductsController(IProductService productService) : ControllerBase
     {
         var products = await productService.GetProductsOfCategoryAsync(id);
         var response = Response<List<ProductReturnDto>>.Success(products, 200);
+        return Ok(response);
+    }
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> Delete(string id)
+    {
+        var result = await productService.RemoveProductAsync(id);
+        var response = Response<string>.Success(result, 200);
         return Ok(response);
     }
 }

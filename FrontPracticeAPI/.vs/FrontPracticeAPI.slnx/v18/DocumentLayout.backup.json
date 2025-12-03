@@ -3,12 +3,52 @@
   "WorkspaceRootPath": "C:\\Users\\User\\Desktop\\CffHackathonPractice\\FrontPracticeAPI\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{CC8A4378-53AF-442C-98B0-C4DC069608FB}|WebAPI\\WebAPI.csproj|c:\\users\\user\\desktop\\cffhackathonpractice\\frontpracticeapi\\webapi\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{CC8A4378-53AF-442C-98B0-C4DC069608FB}|WebAPI\\WebAPI.csproj|solutionrelative:webapi\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}"
+      "AbsoluteMoniker": "D:0:0:{8D6B33C5-CEE1-20B5-A207-99CBB61F699C}|WebAPI\\WebAPI.csproj|c:\\users\\user\\desktop\\cffhackathonpractice\\frontpracticeapi\\webapi\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8D6B33C5-CEE1-20B5-A207-99CBB61F699C}|WebAPI\\WebAPI.csproj|solutionrelative:webapi\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CC8A4378-53AF-442C-98B0-C4DC069608FB}|WebAPI\\WebAPI.csproj|c:\\users\\user\\desktop\\cffhackathonpractice\\frontpracticeapi\\webapi\\services\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CC8A4378-53AF-442C-98B0-C4DC069608FB}|WebAPI\\WebAPI.csproj|solutionrelative:webapi\\services\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8D6B33C5-CEE1-20B5-A207-99CBB61F699C}|WebAPI\\WebAPI.csproj|c:\\users\\user\\desktop\\cffhackathonpractice\\frontpracticeapi\\webapi\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8D6B33C5-CEE1-20B5-A207-99CBB61F699C}|WebAPI\\WebAPI.csproj|solutionrelative:webapi\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8D6B33C5-CEE1-20B5-A207-99CBB61F699C}|WebAPI\\WebAPI.csproj|c:\\users\\user\\desktop\\cffhackathonpractice\\frontpracticeapi\\webapi\\services\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8D6B33C5-CEE1-20B5-A207-99CBB61F699C}|WebAPI\\WebAPI.csproj|solutionrelative:webapi\\services\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8D6B33C5-CEE1-20B5-A207-99CBB61F699C}|WebAPI\\WebAPI.csproj|c:\\users\\user\\desktop\\cffhackathonpractice\\frontpracticeapi\\webapi\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8D6B33C5-CEE1-20B5-A207-99CBB61F699C}|WebAPI\\WebAPI.csproj|solutionrelative:webapi\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8D6B33C5-CEE1-20B5-A207-99CBB61F699C}|WebAPI\\WebAPI.csproj|c:\\users\\user\\desktop\\cffhackathonpractice\\frontpracticeapi\\webapi\\controllers\\categoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8D6B33C5-CEE1-20B5-A207-99CBB61F699C}|WebAPI\\WebAPI.csproj|solutionrelative:webapi\\controllers\\categoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8D6B33C5-CEE1-20B5-A207-99CBB61F699C}|WebAPI\\WebAPI.csproj|c:\\users\\user\\desktop\\cffhackathonpractice\\frontpracticeapi\\webapi\\services\\categoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8D6B33C5-CEE1-20B5-A207-99CBB61F699C}|WebAPI\\WebAPI.csproj|solutionrelative:webapi\\services\\categoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\User\\Desktop\\CffHackathonPractice\\FrontPracticeAPI\\WebAPI\\Migrations\\20251203102055_mig_1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:WebAPI\\Migrations\\20251203102055_mig_1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8D6B33C5-CEE1-20B5-A207-99CBB61F699C}|WebAPI\\WebAPI.csproj|c:\\users\\user\\desktop\\cffhackathonpractice\\frontpracticeapi\\webapi\\contexts\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8D6B33C5-CEE1-20B5-A207-99CBB61F699C}|WebAPI\\WebAPI.csproj|solutionrelative:webapi\\contexts\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8D6B33C5-CEE1-20B5-A207-99CBB61F699C}|WebAPI\\WebAPI.csproj|c:\\users\\user\\desktop\\cffhackathonpractice\\frontpracticeapi\\webapi\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{8D6B33C5-CEE1-20B5-A207-99CBB61F699C}|WebAPI\\WebAPI.csproj|solutionrelative:webapi\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8D6B33C5-CEE1-20B5-A207-99CBB61F699C}|WebAPI\\WebAPI.csproj|c:\\users\\user\\desktop\\cffhackathonpractice\\frontpracticeapi\\webapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{8D6B33C5-CEE1-20B5-A207-99CBB61F699C}|WebAPI\\WebAPI.csproj|solutionrelative:webapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8D6B33C5-CEE1-20B5-A207-99CBB61F699C}|WebAPI\\WebAPI.csproj|c:\\users\\user\\desktop\\cffhackathonpractice\\frontpracticeapi\\webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8D6B33C5-CEE1-20B5-A207-99CBB61F699C}|WebAPI\\WebAPI.csproj|solutionrelative:webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8D6B33C5-CEE1-20B5-A207-99CBB61F699C}|WebAPI\\WebAPI.csproj|c:\\users\\user\\desktop\\cffhackathonpractice\\frontpracticeapi\\webapi\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{8D6B33C5-CEE1-20B5-A207-99CBB61F699C}|WebAPI\\WebAPI.csproj|solutionrelative:webapi\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,32 +58,162 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Dockerfile",
-              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CffHackathonPractice\\FrontPracticeAPI\\WebAPI\\Dockerfile",
-              "RelativeDocumentMoniker": "WebAPI\\Dockerfile",
-              "ToolTip": "C:\\Users\\User\\Desktop\\CffHackathonPractice\\FrontPracticeAPI\\WebAPI\\Dockerfile",
-              "RelativeToolTip": "WebAPI\\Dockerfile",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-12-03T08:16:12.981Z",
+              "DocumentIndex": 1,
+              "Title": "Category.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CffHackathonPractice\\FrontPracticeAPI\\WebAPI\\Models\\Category.cs",
+              "RelativeDocumentMoniker": "WebAPI\\Models\\Category.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CffHackathonPractice\\FrontPracticeAPI\\WebAPI\\Models\\Category.cs",
+              "RelativeToolTip": "WebAPI\\Models\\Category.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-03T10:32:10.134Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
+              "Title": "Product.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CffHackathonPractice\\FrontPracticeAPI\\WebAPI\\Models\\Product.cs",
+              "RelativeDocumentMoniker": "WebAPI\\Models\\Product.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CffHackathonPractice\\FrontPracticeAPI\\WebAPI\\Models\\Product.cs",
+              "RelativeToolTip": "WebAPI\\Models\\Product.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-03T10:31:39.923Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "ProductService.cs",
               "DocumentMoniker": "C:\\Users\\User\\Desktop\\CffHackathonPractice\\FrontPracticeAPI\\WebAPI\\Services\\ProductService.cs",
               "RelativeDocumentMoniker": "WebAPI\\Services\\ProductService.cs",
               "ToolTip": "C:\\Users\\User\\Desktop\\CffHackathonPractice\\FrontPracticeAPI\\WebAPI\\Services\\ProductService.cs",
               "RelativeToolTip": "WebAPI\\Services\\ProductService.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAgwB0AAABAAAAAAAAAAA==",
+              "ViewState": "AgIAABUAAAAAAAAAAIAwwCgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-03T07:14:58.728Z",
+              "WhenOpened": "2025-12-03T10:24:49.761Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ProductsController.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CffHackathonPractice\\FrontPracticeAPI\\WebAPI\\Controllers\\ProductsController.cs",
+              "RelativeDocumentMoniker": "WebAPI\\Controllers\\ProductsController.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CffHackathonPractice\\FrontPracticeAPI\\WebAPI\\Controllers\\ProductsController.cs",
+              "RelativeToolTip": "WebAPI\\Controllers\\ProductsController.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAQwBwAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-03T10:24:44.989Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "CategoryService.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CffHackathonPractice\\FrontPracticeAPI\\WebAPI\\Services\\CategoryService.cs",
+              "RelativeDocumentMoniker": "WebAPI\\Services\\CategoryService.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CffHackathonPractice\\FrontPracticeAPI\\WebAPI\\Services\\CategoryService.cs",
+              "RelativeToolTip": "WebAPI\\Services\\CategoryService.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAApwCoAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-03T10:24:17.454Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CategoriesController.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CffHackathonPractice\\FrontPracticeAPI\\WebAPI\\Controllers\\CategoriesController.cs",
+              "RelativeDocumentMoniker": "WebAPI\\Controllers\\CategoriesController.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CffHackathonPractice\\FrontPracticeAPI\\WebAPI\\Controllers\\CategoriesController.cs",
+              "RelativeToolTip": "WebAPI\\Controllers\\CategoriesController.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAwBUAAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-03T10:23:49.586Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "20251203102055_mig_1.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CffHackathonPractice\\FrontPracticeAPI\\WebAPI\\Migrations\\20251203102055_mig_1.cs",
+              "RelativeDocumentMoniker": "WebAPI\\Migrations\\20251203102055_mig_1.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CffHackathonPractice\\FrontPracticeAPI\\WebAPI\\Migrations\\20251203102055_mig_1.cs",
+              "RelativeToolTip": "WebAPI\\Migrations\\20251203102055_mig_1.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-03T10:20:55.864Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CffHackathonPractice\\FrontPracticeAPI\\WebAPI\\Contexts\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "WebAPI\\Contexts\\ApplicationDbContext.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CffHackathonPractice\\FrontPracticeAPI\\WebAPI\\Contexts\\ApplicationDbContext.cs",
+              "RelativeToolTip": "WebAPI\\Contexts\\ApplicationDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-03T10:19:59.705Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CffHackathonPractice\\FrontPracticeAPI\\WebAPI\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "WebAPI\\Properties\\launchSettings.json",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CffHackathonPractice\\FrontPracticeAPI\\WebAPI\\Properties\\launchSettings.json",
+              "RelativeToolTip": "WebAPI\\Properties\\launchSettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-12-03T10:19:28.275Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CffHackathonPractice\\FrontPracticeAPI\\WebAPI\\Program.cs",
+              "RelativeDocumentMoniker": "WebAPI\\Program.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CffHackathonPractice\\FrontPracticeAPI\\WebAPI\\Program.cs",
+              "RelativeToolTip": "WebAPI\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-03T10:14:55.468Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CffHackathonPractice\\FrontPracticeAPI\\WebAPI\\appsettings.json",
+              "RelativeDocumentMoniker": "WebAPI\\appsettings.json",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CffHackathonPractice\\FrontPracticeAPI\\WebAPI\\appsettings.json",
+              "RelativeToolTip": "WebAPI\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-12-03T10:07:32.752Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CffHackathonPractice\\FrontPracticeAPI\\WebAPI\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "WebAPI\\appsettings.Development.json",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CffHackathonPractice\\FrontPracticeAPI\\WebAPI\\appsettings.Development.json",
+              "RelativeToolTip": "WebAPI\\appsettings.Development.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-12-03T10:07:30.856Z",
               "EditorCaption": ""
             }
           ]
