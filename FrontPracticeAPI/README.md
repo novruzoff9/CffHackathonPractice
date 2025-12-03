@@ -4,7 +4,7 @@ Bu API, kategori və məhsul idarəetməsi üçün RESTful endpointlər təqdim 
 
 ## Base URL
 ```
-https://localhost:5xxx/api
+https://13.61.183.66:5000/api
 ```
 
 ## Response Formatı
