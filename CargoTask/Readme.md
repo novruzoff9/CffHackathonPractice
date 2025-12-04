@@ -1,5 +1,4 @@
-# Lab 7 - 17 oktyabr
-## Karqo Sistemi:
+# Karqo Sistemi:
 1. Yaradılmalı olan class-lar aşağıdakılardır. Mütləq şəkildə instance-lar `constructor` ilə yaradılmalıdır
     - `Customer`
         - Id (statik olaraq artacaq şəkildə olmalıdır)
@@ -20,7 +19,7 @@
             Bu metod `OrderStatus` tipindən bir dəyər qəbul edəcək. Sifarişin statusunu yeniləmək üçün istifadə olunacaq. Lakin burda əlavə yoxlama aparılacaq ki, əgər sifariş ləğv edilibsə və ya tamamlanıbsa statusu dəyi.mək mümkün olmasın. 
 2. `OrderStatus` adında enum yaradılmalıdır. Alacağı dəyərlər (Created, OnTheWay, Delivered, Cancelled)
 3. `ICargoService` interfeysi:
-    Özündə `Customer`, `Courier` və `CargoOrder` listləri saxyalacaq. Aşağıdakı metodları bacardığınız qədər `async` yazın.
+    Özündə `Customer`, `Courier` və `CargoOrder` listləri saxyalacaq
     - `AddCustomer()`: Bir `Customer` qəbul edib müştəri listinə əlavə edəcək.
     - `AddCourier()`: Bir `Courier` qəbul edib müştəri listinə əlavə edəcək.
     - `CreateOrder()`: Buraya gələcək olan `CargoOrder` obyekti daxilində olan - `CustomerId` və `CourierId` dəyərləri yoxlanılacaq ki, bu dəyərlərə uyğun məlumat varmı (əgər tapılmasa exception göndərilsin). Əgər hər ikisi varsa daha sonra tapılan kuryerin sifarişə uyğun olub olmaması yoxlanılacaq yəni onun `IsAvialable` propertisi. Əgər kuryer sifarişə uyğun olmasa `Exception` atılacaq (custom yaratmağınız daha yaxşı olar). Əgər uyğundursa onu qeyd edəcək və həmin kuryer artıq sifariş qəbul edə bilməyəcək.
