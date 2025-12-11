@@ -1,0 +1,12 @@
+﻿{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  },
+  "ConnectionStrings": {
+    "default": "Server=13.61.183.66;Port=5432;Database=CffPractice;User Id=cff;Password=Cff12345;Pooling=true;Minimum Pool Size=1;Maximum Pool Size=100;"
+  },
+  "AllowedHosts": "*"
+}

@@ -1,0 +1,329 @@
+﻿# Authentication & Authorization Guide
+
+## Overview
+This API now includes a complete authentication and authorization system using ASP.NET Core Identity and JWT tokens.
+
+## User Roles
+- **User**: Can read products/categories and create orders
+- **Admin**: Can create, update, and delete products/categories, plus view all orders
+
+## Authentication Endpoints
+
+### 1. Register
+**POST** `/api/Auth/register`
+
+Create a new user account (registered as "User" role by default).
+
+**Request Body:**
+```json
+{
+  "email": "user@example.com",
+  "password": "Password123",
+  "userName": "johndoe"
+}
+```
+
+**Response:**
+```json
+{
+  "data": {
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+    "email": "user@example.com",
+    "userName": "johndoe",
+    "userId": "user-guid-id"
+  },
+  "isSuccess": true,
+  "statusCode": 201,
+  "errors": []
+}
+```
+
+### 2. Login
+**POST** `/api/Auth/login`
+
+Authenticate and receive a JWT token.
+
+**Request Body:**
+```json
+{
+  "email": "user@example.com",
+  "password": "Password123"
+}
+```
+
+**Response:**
+```json
+{
+  "data": {
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+    "email": "user@example.com",
+    "userName": "johndoe",
+    "userId": "user-guid-id"
+  },
+  "isSuccess": true,
+  "statusCode": 200,
+  "errors": []
+}
+```
+
+## Using the JWT Token
+
+After logging in or registering, include the JWT token in the `Authorization` header for all protected endpoints:
+
+```
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+```
+
+## Order Endpoints
+
+### 1. Create Order (Authenticated Users)
+**POST** `/api/Orders`
+**Authorization:** Required (User or Admin)
+
+**Request Body:**
+```json
+{
+  "productId": "product-guid-id",
+  "quantity": 2
+}
+```
+
+**Response:**
+```json
+{
+  "data": {
+    "id": "order-guid-id",
+    "productId": "product-guid-id",
+    "productName": "iPhone 15",
+    "quantity": 2,
+    "totalPrice": 2599.98,
+    "orderDate": "2024-01-15T10:30:00Z",
+    "userEmail": "user@example.com"
+  },
+  "isSuccess": true,
+  "statusCode": 201,
+  "errors": []
+}
+```
+
+### 2. Get My Orders (Authenticated Users)
+**GET** `/api/Orders/my-orders`
+**Authorization:** Required (User or Admin)
+
+Returns all orders for the authenticated user.
+
+**Response:**
+```json
+{
+  "data": [
+    {
+      "id": "order-guid-id",
+      "productId": "product-guid-id",
+      "productName": "iPhone 15",
+      "quantity": 2,
+      "totalPrice": 2599.98,
+      "orderDate": "2024-01-15T10:30:00Z",
+      "userEmail": "user@example.com"
+    }
+  ],
+  "isSuccess": true,
+  "statusCode": 200,
+  "errors": []
+}
+```
+
+### 3. Get All Orders (Admin Only)
+**GET** `/api/Orders/all`
+**Authorization:** Required (Admin role)
+
+Returns all orders from all users.
+
+## Protected Endpoints
+
+### Public Endpoints (No Authentication Required)
+- `GET /api/Categories` - Get all categories
+- `GET /api/Categories/{id}` - Get category by ID
+- `GET /api/Products` - Get all products
+- `GET /api/Products/{id}` - Get product by ID
+- `GET /api/Products/category/{id}` - Get products by category
+- `POST /api/Auth/register` - Register new user
+- `POST /api/Auth/login` - Login
+
+### Admin Only Endpoints
+- `POST /api/Categories` - Create category
+- `DELETE /api/Categories/{id}` - Delete category
+- `POST /api/Products` - Create product
+- `DELETE /api/Products/{id}` - Delete product
+- `GET /api/Orders/all` - Get all orders
+
+### Authenticated User Endpoints
+- `POST /api/Orders` - Create order
+- `GET /api/Orders/my-orders` - Get user's orders
+
+## 🎁 Seeded Users
+
+The application automatically creates the following test users on startup:
+
+### 👑 Admin User (Pre-seeded)
+- **Email:** `admin@test.com`
+- **Password:** `Admin123`
+- **Username:** `admin`
+- **Role:** Admin
+- **Permissions:** Full access to all endpoints
+
+### 👤 Regular User (Pre-seeded)
+- **Email:** `user@test.com`
+- **Password:** `User123`
+- **Username:** `user`
+- **Role:** User
+- **Permissions:** Can browse products/categories and create orders
+
+**You can use these credentials immediately without registration!**
+
+### Quick Login Example (Admin)
+```bash
+curl -X POST http://localhost:5000/api/Auth/login \
+  -H "Content-Type: application/json" \
+  -d '{
+    "email": "admin@test.com",
+    "password": "Admin123"
+  }'
+```
+
+### Quick Login Example (User)
+```bash
+curl -X POST http://localhost:5000/api/Auth/login \
+  -H "Content-Type: application/json" \
+  -d '{
+    "email": "user@test.com",
+    "password": "User123"
+  }'
+```
+
+## Creating Additional Admin Users
+
+If you need to create additional admin users:
+
+**Option 1: Database Update (Direct SQL)**
+```sql
+-- First, register the user normally, then find the user ID
+SELECT "Id", "Email" FROM "AspNetUsers" WHERE "Email" = 'newadmin@example.com';
+
+-- Then assign Admin role
+INSERT INTO "AspNetUserRoles" ("UserId", "RoleId")
+SELECT 
+    (SELECT "Id" FROM "AspNetUsers" WHERE "Email" = 'newadmin@example.com'),
+    (SELECT "Id" FROM "AspNetRoles" WHERE "Name" = 'Admin');
+```
+
+**Option 2: Register normally and update via database**
+1. Register a new user via `/api/Auth/register`
+2. Use the SQL above to assign Admin role
+3. User needs to login again to get a new token with Admin claims
+
+## Password Requirements
+- Minimum 6 characters
+- Must contain at least one digit
+- Must contain at least one lowercase letter
+- Uppercase letters and special characters are optional
+
+## Error Responses
+
+### 401 Unauthorized
+Returned when:
+- No JWT token is provided
+- JWT token is invalid or expired
+- JWT token is malformed
+
+### 403 Forbidden
+Returned when:
+- User is authenticated but doesn't have the required role
+- User tries to access admin-only endpoints without Admin role
+
+### Example Error Response:
+```json
+{
+  "data": null,
+  "isSuccess": false,
+  "statusCode": 401,
+  "errors": ["Unauthorized access"]
+}
+```
+
+## Database Migration
+
+After implementing these changes, create and apply a new migration:
+
+```bash
+# Create migration
+dotnet ef migrations add AddIdentityAndOrders
+
+# Apply migration
+dotnet ef database update
+```
+
+## Testing the API
+
+### 1. Register a User
+```bash
+curl -X POST http://localhost:5000/api/Auth/register \
+  -H "Content-Type: application/json" \
+  -d '{
+    "email": "user@example.com",
+    "password": "Password123",
+    "userName": "johndoe"
+  }'
+```
+
+### 2. Login
+```bash
+curl -X POST http://localhost:5000/api/Auth/login \
+  -H "Content-Type: application/json" \
+  -d '{
+    "email": "user@example.com",
+    "password": "Password123"
+  }'
+```
+
+### 3. Create Order (with token)
+```bash
+curl -X POST http://localhost:5000/api/Orders \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer YOUR_JWT_TOKEN_HERE" \
+  -d '{
+    "productId": "product-id-here",
+    "quantity": 2
+  }'
+```
+
+### 4. Try Admin Endpoint (will fail with 403 if not admin)
+```bash
+curl -X POST http://localhost:5000/api/Categories \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer YOUR_JWT_TOKEN_HERE" \
+  -d '{
+    "name": "New Category"
+  }'
+```
+
+## Security Notes
+
+1. **Change the JWT Secret Key**: Update the `SecretKey` in `appsettings.json` to a strong, unique value in production.
+2. **Use HTTPS**: Always use HTTPS in production to protect JWT tokens in transit.
+3. **Token Expiration**: JWT tokens expire after 24 hours. Users need to login again after expiration.
+4. **Role Management**: Only create Admin users through secure channels.
+5. **Database Security**: Secure your database connection string and credentials.
+
+## Summary of Changes
+
+1. ✅ Implemented `RemoveCategoryAsync` method with exception handling
+2. ✅ Added ASP.NET Core Identity for user management
+3. ✅ Added JWT Bearer authentication
+4. ✅ Created User and Admin roles
+5. ✅ Protected admin endpoints (Create/Delete Products and Categories)
+6. ✅ Added Order model and functionality
+7. ✅ Users can create orders for products
+8. ✅ Public read access to products and categories
+9. ✅ Admins can manage all resources
+10. ✅ Users can view their own orders
+11. ✅ Admins can view all orders

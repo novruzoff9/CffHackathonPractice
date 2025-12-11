@@ -1,0 +1,391 @@
+﻿# Setup and Testing Guide
+
+## Prerequisites
+- .NET 10.0 SDK installed
+- PostgreSQL database running
+- API client (Postman, Insomnia, or curl)
+
+## 🚀 Quick Start
+
+### Step 1: Restore NuGet Packages
+```bash
+cd WebAPI
+dotnet restore
+```
+
+### Step 2: Create Database Migration
+```bash
+dotnet ef migrations add AddIdentityAndOrders
+```
+
+### Step 3: Apply Migration to Database
+```bash
+dotnet ef database update
+```
+
+This will:
+- Create Identity tables (AspNetUsers, AspNetRoles, etc.)
+- Create Orders table
+- Set up relationships
+- Initialize Admin and User roles
+
+### Step 4: Run the Application
+```bash
+dotnet run
+```
+
+The API will start at:
+- HTTP: `http://localhost:5000`
+- HTTPS: `https://localhost:5001`
+- Swagger/Scalar UI: `http://localhost:5000/scalar/v1`
+
+---
+
+## 🧪 Testing the API
+
+### Test 1: Register a Regular User
+
+**Request:**
+```bash
+curl -X POST http://localhost:5000/api/Auth/register \
+  -H "Content-Type: application/json" \
+  -d '{
+    "email": "user@test.com",
+    "password": "User123",
+    "userName": "testuser"
+  }'
+```
+
+**Expected Response:**
+```json
+{
+  "data": {
+    "token": "eyJhbGc...",
+    "email": "user@test.com",
+    "userName": "testuser",
+    "userId": "guid-here"
+  },
+  "isSuccess": true,
+  "statusCode": 201,
+  "errors": []
+}
+```
+
+💾 **Save the token** - you'll need it for authenticated requests!
+
+---
+
+### Test 2: Browse Products (No Auth Required)
+
+**Request:**
+```bash
+curl -X GET http://localhost:5000/api/Products
+```
+
+**Expected:** List of products (may be empty initially)
+
+---
+
+### Test 3: Create Order (Requires User Token)
+
+**Request:**
+```bash
+curl -X POST http://localhost:5000/api/Orders \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer YOUR_TOKEN_HERE" \
+  -d '{
+    "productId": "existing-product-id",
+    "quantity": 2
+  }'
+```
+
+**Expected:** Order created successfully
+
+---
+
+### Test 4: Try to Create Product as Regular User (Should Fail)
+
+**Request:**
+```bash
+curl -X POST http://localhost:5000/api/Products \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer YOUR_USER_TOKEN" \
+  -d '{
+    "name": "Test Product",
+    "description": "Test",
+    "price": 99.99,
+    "categoryId": "category-id"
+  }'
+```
+
+**Expected:** `403 Forbidden` (user is not an admin)
+
+---
+
+## 🎁 Pre-Seeded Test Users
+
+The application automatically creates test users on startup. You can use these immediately:
+
+### 👑 Admin User
+- **Email:** `admin@test.com`
+- **Password:** `Admin123`
+- **Role:** Admin
+
+### 👤 Regular User
+- **Email:** `user@test.com`
+- **Password:** `User123`
+- **Role:** User
+
+**No need to create users manually - they are ready to use!**
+
+## 👑 Creating Additional Admin Users
+
+If you need to create more admin users:
+
+### Method 1: Direct Database Update (Recommended)
+
+1. First, register a user normally via `/api/Auth/register`
+2. Connect to your PostgreSQL database
+3. Run these SQL commands:
+
+```sql
+-- Find your user ID
+SELECT "Id", "Email", "UserName" 
+FROM "AspNetUsers" 
+WHERE "Email" = 'newadmin@test.com';
+
+-- Get the Admin role ID
+SELECT "Id", "Name" 
+FROM "AspNetRoles" 
+WHERE "Name" = 'Admin';
+
+-- Assign Admin role to the user
+INSERT INTO "AspNetUserRoles" ("UserId", "RoleId")
+VALUES (
+    (SELECT "Id" FROM "AspNetUsers" WHERE "Email" = 'newadmin@test.com'),
+    (SELECT "Id" FROM "AspNetRoles" WHERE "Name" = 'Admin')
+);
+```
+
+---
+
+### Test 5: Login as Admin
+
+**Request:**
+```bash
+curl -X POST http://localhost:5000/api/Auth/login \
+  -H "Content-Type: application/json" \
+  -d '{
+    "email": "admin@test.com",
+    "password": "Admin123"
+  }'
+```
+
+**Expected:** Token with Admin role
+
+💾 **Save the admin token!**
+
+---
+
+### Test 6: Create Category as Admin
+
+**Request:**
+```bash
+curl -X POST http://localhost:5000/api/Categories \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer YOUR_ADMIN_TOKEN" \
+  -d '{
+    "name": "Electronics"
+  }'
+```
+
+**Expected:** Category created successfully
+
+---
+
+### Test 7: Create Product as Admin
+
+**Request:**
+```bash
+curl -X POST http://localhost:5000/api/Products \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer YOUR_ADMIN_TOKEN" \
+  -d '{
+    "name": "iPhone 15",
+    "description": "Latest iPhone",
+    "price": 1299.99,
+    "categoryId": "CATEGORY_ID_FROM_STEP_6"
+  }'
+```
+
+**Expected:** Product created successfully
+
+---
+
+### Test 8: View All Orders as Admin
+
+**Request:**
+```bash
+curl -X GET http://localhost:5000/api/Orders/all \
+  -H "Authorization: Bearer YOUR_ADMIN_TOKEN"
+```
+
+**Expected:** List of all orders from all users
+
+---
+
+## 🔍 Verification Checklist
+
+- [ ] Regular user can register
+- [ ] Regular user can login
+- [ ] Anyone can view products and categories
+- [ ] Authenticated user can create orders
+- [ ] Authenticated user can view their own orders
+- [ ] Regular user **cannot** create/delete products
+- [ ] Regular user **cannot** create/delete categories
+- [ ] Regular user **cannot** view all orders
+- [ ] Admin can create categories
+- [ ] Admin can delete categories
+- [ ] Admin can create products
+- [ ] Admin can delete products
+- [ ] Admin can view all orders
+
+---
+
+## 🐛 Troubleshooting
+
+### Issue: Migration Failed
+**Solution:** 
+- Check database connection string in `appsettings.json`
+- Ensure PostgreSQL is running
+- Verify database exists and credentials are correct
+
+### Issue: 401 Unauthorized
+**Solution:**
+- Verify token is included in Authorization header
+- Check token hasn't expired (24 hour validity)
+- Ensure format is: `Authorization: Bearer <token>`
+
+### Issue: 403 Forbidden
+**Solution:**
+- Verify user has correct role
+- Check endpoint requires correct role
+- Re-login to get fresh token after role assignment
+
+### Issue: Can't Create Orders
+**Solution:**
+- Ensure product exists
+- Verify productId is correct
+- Check authentication token is valid
+
+### Issue: Roles Not Created
+**Solution:**
+- Roles are created on application startup
+- Restart the application
+- Check database: `SELECT * FROM "AspNetRoles";`
+
+---
+
+## 📊 Database Verification Queries
+
+### Check Users
+```sql
+SELECT "Id", "UserName", "Email" 
+FROM "AspNetUsers";
+```
+
+### Check Roles
+```sql
+SELECT * FROM "AspNetRoles";
+```
+
+### Check User Roles
+```sql
+SELECT 
+    u."Email", 
+    r."Name" as "Role"
+FROM "AspNetUsers" u
+JOIN "AspNetUserRoles" ur ON u."Id" = ur."UserId"
+JOIN "AspNetRoles" r ON ur."RoleId" = r."Id";
+```
+
+### Check Orders
+```sql
+SELECT 
+    o."Id",
+    u."Email" as "UserEmail",
+    p."Name" as "ProductName",
+    o."Quantity",
+    o."OrderDate"
+FROM "Orders" o
+JOIN "AspNetUsers" u ON o."UserId" = u."Id"
+JOIN "Products" p ON o."ProductId" = p."Id";
+```
+
+---
+
+## 🎯 Complete Test Scenario
+
+1. **Setup Admin:**
+   - Register user: admin@test.com
+   - Assign Admin role via database
+   - Login as admin
+
+2. **Setup Catalog (as Admin):**
+   - Create category: "Electronics"
+   - Create product: "iPhone 15" in Electronics category
+   - Create category: "Clothing"
+   - Create product: "T-Shirt" in Clothing category
+
+3. **Test Regular User:**
+   - Register user: user@test.com
+   - Login as user
+   - Browse products (should work)
+   - Try to create product (should fail with 403)
+   - Create order for iPhone 15
+   - View own orders (should see 1 order)
+
+4. **Test Admin Powers:**
+   - Login as admin
+   - View all orders (should see user's order)
+   - Delete a product
+   - Create new product
+
+---
+
+## 📚 Next Steps
+
+After testing:
+
+1. **Secure the JWT Key**: Update `appsettings.json` with a strong secret key
+2. **Environment Variables**: Move sensitive config to environment variables
+3. **Add Update Endpoints**: Implement PUT methods for updating products/categories
+4. **Add Pagination**: Implement pagination for large lists
+5. **Add Filtering**: Add search and filter capabilities
+6. **Add Validation**: Enhance input validation
+7. **Add Logging**: Implement proper logging
+8. **Add Unit Tests**: Create unit tests for services
+9. **Add Integration Tests**: Create integration tests for endpoints
+10. **Documentation**: Keep API documentation updated
+
+---
+
+## 🛡️ Production Checklist
+
+Before deploying to production:
+
+- [ ] Change JWT secret key to strong random value
+- [ ] Use environment variables for sensitive data
+- [ ] Enable HTTPS only
+- [ ] Configure CORS properly (not AllowAnyOrigin)
+- [ ] Add rate limiting
+- [ ] Implement refresh tokens
+- [ ] Add email confirmation
+- [ ] Add password reset functionality
+- [ ] Implement proper logging
+- [ ] Add health check endpoints
+- [ ] Configure proper error handling
+- [ ] Set up monitoring and alerts
+- [ ] Backup database regularly
+- [ ] Document all endpoints
+- [ ] Create user guides

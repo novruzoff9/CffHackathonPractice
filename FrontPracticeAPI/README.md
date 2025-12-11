@@ -7,6 +7,94 @@ Bu API, kategori və məhsul idarəetməsi üçün RESTful endpointlər təqdim 
 http://13.61.183.66:5000/api
 ```
 
+## 🔐 Authentication (İstifadəçi Girişi)
+
+API-də authentication sistemi mövcuddur. Bəzi əməliyyatlar üçün giriş tələb olunur.
+
+### Test İstifadəçiləri
+
+Sınaq məqsədləri üçün hazır istifadəçilər:
+
+#### 👤 Admin İstifadəçisi
+- **Email:** `admin@test.com`
+- **Şifrə:** `Admin123`
+- **İstifadəçi adı:** `admin`
+- **Rol:** Admin
+- **İcazələr:** Bütün əməliyyatlara tam giriş
+
+#### 👤 Adi İstifadəçi
+- **Email:** `user@test.com`
+- **Şifrə:** `User123`
+- **İstifadəçi adı:** `user`
+- **Rol:** User
+- **İcazələr:** Məhsullara baxmaq və sifariş yaratmaq
+
+### Giriş (Login)
+
+**POST** `/api/Auth/login`
+
+**Request Body:**
+```json
+{
+  "email": "admin@test.com",
+  "password": "Admin123"
+}
+```
+
+**Response:**
+```json
+{
+  "data": {
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+    "email": "admin@test.com",
+    "userName": "admin",
+    "userId": "user-guid-id"
+  },
+  "isSuccess": true,
+  "statusCode": 200,
+  "errors": []
+}
+```
+
+### Qeydiyyat (Register)
+
+**POST** `/api/Auth/register`
+
+**Request Body:**
+```json
+{
+  "email": "yeni@istifadeci.com",
+  "password": "Password123",
+  "userName": "istifadeci_adi"
+}
+```
+
+### Token-dən İstifadə
+
+Giriş etdikdən sonra aldığınız token-i bütün qorunan endpointlər üçün istifadə edin:
+
+```
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+```
+
+### İcazə Tələb Edən Əməliyyatlar
+
+**Adi İstifadəçilər (User):**
+- Sifariş yaratmaq (POST /api/Orders)
+- Öz sifarişlərini görmək (GET /api/Orders/my-orders)
+
+**Yalnız Admin:**
+- Kategoriya yaratmaq/silmək (POST/DELETE /api/Categories)
+- Məhsul yaratmaq/silmək (POST/DELETE /api/Products)
+- Bütün sifarişləri görmək (GET /api/Orders/all)
+
+**Hamı Üçün Açıq (Authentication tələb olunmur):**
+- Kategoriyalara baxmaq (GET /api/Categories)
+- Məhsullara baxmaq (GET /api/Products)
+- Giriş və Qeydiyyat (POST /api/Auth/login, POST /api/Auth/register)
+
+---
+
 ## Response Formatı
 
 Bütün API cavabları aşağıdakı formatda qaytarılır:
